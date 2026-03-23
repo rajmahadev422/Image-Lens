@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
+import type { ChangeEvent } from "react";
 import { GoogleGenAI } from "@google/genai";
 import Header from "./components/Header";
 import Describe from "./components/Describe";
@@ -6,11 +7,13 @@ import Describe from "./components/Describe";
 const API_KEY = import.meta.env.VITE_GEMINI_KEY;
 const genAI = new GoogleGenAI({ apiKey: API_KEY });
 
+type GeminiResponse = Awaited<ReturnType<typeof genAI.models.generateContent>>;
+
 const App: React.FC = () => {
   const [preview, setPreview] = useState<string | null>(null);
   const [base64, setBase64] = useState<string | null>(null);
   const [mimeType, setMimeType] = useState<string>("");
-  const [result, setResult] = useState<string>("");
+  const [result, setResult] = useState<string | "">("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +57,7 @@ const App: React.FC = () => {
     setIsLoading(true);
     setResult("");
     try {
-      const response = await genAI.models.generateContent({
+      const response: GeminiResponse = await genAI.models.generateContent({
         model: "gemini-2.5-flash",
         contents: [
           {
@@ -72,7 +75,10 @@ const App: React.FC = () => {
             "You are an image analyzer that describes the content of images in a concise manner.Give your answer in less than 50 words with a one line labeling the main subject of the image. Focus on the most prominent elements and avoid overanalyzing minor details.",
         },
       });
-      setResult(response.text);
+
+      if (response.text) {
+        setResult(response.text);
+      }
     } catch (error) {
       console.error("Gemini Error:", error);
       setResult(
@@ -260,7 +266,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Result */}
-          <Describe result={result} isLoading={isLoading} />
+        <Describe result={result} isLoading={isLoading} />
       </div>
     </div>
   );
