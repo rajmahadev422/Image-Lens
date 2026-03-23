@@ -8,7 +8,18 @@
   --font-mono: 'DM Mono', monospace;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #0f172a;
+  --primary-text: #e2e8f0;
+}
+[data-theme="dark"] {
+  --primary-bg: #f8fafc;
+  --primary-text: #0f172a;
+}
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -17,33 +28,85 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.4); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 3px;
+}
 
 @keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes float-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.animate-float-up { animation: float-up 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+
+.animate-float-up {
+  animation: float-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
 @keyframes scan {
-  0%   { transform: translateY(0);    opacity: 0.8; }
-  50%  {                              opacity: 1;   }
-  100% { transform: translateY(100%); opacity: 0.8; }
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
 }
-.scan-line { animation: scan 1.6s ease-in-out infinite; }
+
+.scan-line {
+  animation: scan 1.6s ease-in-out infinite;
+}
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1;   }
-}
-.pulse-glow { animation: pulse-glow 1.8s ease-in-out infinite; }
 
-.tag-pill { transition: transform 0.15s ease; }
-.tag-pill:hover { transform: translateY(-2px); }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 1.8s ease-in-out infinite;
+}
+
+.tag-pill {
+  transition: transform 0.15s ease;
+}
+
+.tag-pill:hover {
+  transform: translateY(-2px);
+}

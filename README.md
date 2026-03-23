@@ -1,5 +1,6 @@
 # ImageLens 🔍
 
+![Website](/public/website.png)
 A sleek, production-quality web app for AI-powered image analysis. Drop any image and get back a rich description, keyword labels, detected objects, dominant colors, and mood — all powered by **Google Gemini 2.0 Flash**.
 
 ---
