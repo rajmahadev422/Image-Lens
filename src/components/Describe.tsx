@@ -9,9 +9,9 @@ const Describe = ({result, isLoading}: DescribeProps) => {
   return (
     <div>
       {result ? (
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/3 overflow-hidden">
+        <div className="mt-6 border border-white/10 bg-white/3 overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/5">
-            <div className="w-2 h-2 rounded-full bg-emerald-400" />
+            <div className="w-2 h-2 bg-emerald-400" />
             <span className="text-xs text-white/40 tracking-widest uppercase font-medium">
               Analysis Result
             </span>
@@ -21,7 +21,7 @@ const Describe = ({result, isLoading}: DescribeProps) => {
           </div>
         </div>
       ) : isLoading ? (
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/3 overflow-hidden">
+        <div className="mt-6 border border-white/10 bg-white/3 overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/5">
             <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
             <span className="text-xs text-white/40 tracking-widest uppercase font-medium">
@@ -39,7 +39,7 @@ const Describe = ({result, isLoading}: DescribeProps) => {
           </div>
         </div>
       ) : (
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/3 overflow-hidden">
+        <div className="mt-6 border border-white/10 bg-white/3 overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/5">
             <div className="w-2 h-2 rounded-full bg-emerald-400" />
             <span className="text-xs text-white/40 tracking-widest uppercase font-medium">

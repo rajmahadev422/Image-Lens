@@ -105,6 +105,7 @@ const App: React.FC = () => {
       </div>
       {/* header */}
       <Header />
+
       <div className="relative grid lg:grid-cols-2 gap-10 z-10 px-6 py-16">
         {/* Upload / Preview area */}
         <div>
@@ -115,7 +116,7 @@ const App: React.FC = () => {
               onDrop={onDrop}
               onClick={() => fileInputRef.current?.click()}
               className={`
-              relative group cursor-pointer rounded-2xl border-2 border-dashed transition-all duration-300
+              relative group cursor-pointer border-2 border-dashed transition-all duration-300
               flex flex-col items-center justify-center gap-5 p-16
               ${
                 isDragging
@@ -127,7 +128,7 @@ const App: React.FC = () => {
               {/* Upload icon */}
               <div
                 className={`
-              w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300
+              w-16 h-16 flex items-center justify-center transition-all duration-300
               ${isDragging ? "bg-violet-500/20 scale-110" : "bg-white/5 group-hover:bg-white/10"}
             `}
               >
@@ -164,7 +165,7 @@ const App: React.FC = () => {
               />
             </div>
           ) : (
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/3">
+            <div className="rounded overflow-hidden border border-white/10 bg-white/3">
               {/* Image preview */}
               <div className="relative group">
                 <img
